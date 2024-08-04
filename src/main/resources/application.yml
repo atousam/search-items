@@ -1,0 +1,48 @@
+contract:
+  external:
+    book:
+      google:
+        url: https://www.googleapis.com
+        key: AIzaSyARlz5ihS0A2ly9VPiHBmPSIqFhc0PJ0wU
+        max: 5
+    album:
+      itune:
+        url: https://itunes.apple.com/search
+        max: 5
+
+spring:
+  cloud:
+    circuitbreaker:
+      resilience4j:
+        enabled: true
+
+feign:
+  client:
+    config:
+      default:
+        connectionTimeout: 30000
+        readTimeout: 60000
+
+#Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+#CIRCUIT BREAKER
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        slidingWindowSize: 100
+        permittedNumberOfCallsInHalfOpenState: 30
+        waitDurationInOpenState: 10s
+        failureRateThreshold: 70
+        eventConsumerBufferSize: 10
+        registerHealthIndicator: true
+        slidingWindowType: "COUNT_BASED"
+        slowCallRateThreshold: 90
+        slowCallDurationThreshold: 40s
+        retryExceptions:
+          - org.atousa.items.exception.TimeoutContractException
