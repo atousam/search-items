@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  redis:
+    image: redis
+    container_name: redis-items-sys
+    hostname: localhost
+    ports:
+      - 6379:6379
+    networks:
+      - "search-items-net"
+  items:
+    build: .
+    ports:
+      - "8080:8080"
+    hostname: localhost
+    networks:
+      - "search-items-net"
+    depends_on:
+      - redis
+    command: ["/home/files/wait-for-it.sh", "-t", "60", "-s", "redis:6379", "--", "java", "-Dspring.profiles.active=docker", "-jar", "/home/files/app.jar" ]
+networks:
+  search-items-net: {}

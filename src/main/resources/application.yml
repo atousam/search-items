@@ -44,5 +44,5 @@ resilience4j:
         slidingWindowType: "COUNT_BASED"
         slowCallRateThreshold: 90
         slowCallDurationThreshold: 40s
-        retryExceptions:
+        recordExceptions:
           - org.atousa.items.exception.TimeoutContractException
