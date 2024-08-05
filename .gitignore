@@ -2,6 +2,6 @@
 *.iml
 **/*.iml
 target
-logs
+log
 *.tar.gz
 **/*.jar
