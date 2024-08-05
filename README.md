@@ -16,6 +16,15 @@ contract:
 ```
 Please change it according to your preferences.
 
+# Technologies:
+1. Using Actuator to expose health check.
+  End point: http://localhost:8080/actuator/health   
+2. Using Actuator to expose prometheus metrics, in upstream response time
+  End point: http://localhost:8080/actuator/prometheus
+3. Using circuit breaker in time out of upstream services (google and iTune)
+4. Using Redis to cache responses of books and albums
+
+
 # Run
 1. Build project by maven:
    mvn clean package
