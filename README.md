@@ -1,6 +1,7 @@
 # search-items
 
 This project contains search among items of google book and albums of iTunes. You can change propeties of your configs through application.yml file. Configs which are related to searching items are stored in following config:
+```
 contract:
   external:
     book:
@@ -12,6 +13,7 @@ contract:
       itune:
         url: https://itunes.apple.com/search
         max: 5
+```
 Please change it according to your preferences.
 
 # Run
