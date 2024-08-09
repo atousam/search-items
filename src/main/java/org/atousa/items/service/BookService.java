@@ -16,6 +16,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.net.SocketTimeoutException;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -52,7 +53,8 @@ public class BookService {
                             .pageCount(bg.getVolumeInfo().getPageCount())
                             .categories(bg.getVolumeInfo().getCategories())
                             .build())
-                    .collect(Collectors.toList());
+                    .sorted(Comparator.comparing(BookItemResponseDto::getTitle))
+                    .toList();
         } catch (RetryableException retryableException) {
             log.error("Exception in calling Google books, ", retryableException);
             if (retryableException.getCause() instanceof SocketTimeoutException) {
