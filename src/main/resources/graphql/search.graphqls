@@ -1,0 +1,31 @@
+type Query {
+    searchItemsGrQl(term: String): SearchResponseDto
+}
+
+type SearchResponseDto {
+    books: [BookItemResponseDto]
+    musics: [MusicItemResponseDto]
+}
+
+type BookItemResponseDto {
+    title: String
+    subtitle: String
+    authors: [String]
+    publishedDate: String
+    publisher: String
+    description: String
+    pageCount: Int
+    categories: [String]
+}
+
+type MusicItemResponseDto {
+    kind: String
+    artistId: String
+    collectionId: String
+    artistName: String
+    collectionName: String
+    trackName: String
+    collectionCensoredName: String
+    trackCensoredName: String
+    releaseDate: String
+}

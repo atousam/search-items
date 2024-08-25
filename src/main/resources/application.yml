@@ -15,6 +15,9 @@ spring:
     circuitbreaker:
       resilience4j:
         enabled: true
+  graphql:
+    graphiql:
+      enabled: true
 
 feign:
   client:
