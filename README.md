@@ -36,6 +36,7 @@ Please change it according to your preferences.
 
  To test using graphQL you can use URL: http://localhost:8080/graphiql?path=/graphql
  Type your desired parameters is text area. Sample:
+ ```
  query {
   searchItemsGrQl(term: "hot") {
     books {
@@ -61,5 +62,6 @@ Please change it according to your preferences.
     }
   }
 }
+```
 
 
