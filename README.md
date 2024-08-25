@@ -34,3 +34,32 @@ Please change it according to your preferences.
  The project will start successfully. 
  Swagger URL: http://localhost:8080/swagger-ui/index.html
 
+ To test using graphQL you can use URL: http://localhost:8080/graphiql?path=/graphql
+ Type your desired parameters is text area. Sample:
+ query {
+  searchItemsGrQl(term: "hot") {
+    books {
+      title,
+    subtitle,
+    authors,
+    publishedDate,
+    publisher,
+    description,
+    pageCount,
+    categories
+    }
+    musics {
+      kind,
+    artistId,
+    collectionId,
+    artistName,
+    collectionName,
+    trackName,
+    collectionCensoredName,
+    trackCensoredName,
+    releaseDate
+    }
+  }
+}
+
+
