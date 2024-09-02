@@ -15,16 +15,15 @@ spring:
     circuitbreaker:
       resilience4j:
         enabled: true
+    openfeign:
+      client:
+        config:
+          default:
+            connect-timeout: 10000
+            read-timeout: 20
   graphql:
     graphiql:
       enabled: true
-
-feign:
-  client:
-    config:
-      default:
-        connectionTimeout: 30000
-        readTimeout: 60000
 
 #Actuator
 management:
