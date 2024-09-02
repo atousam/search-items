@@ -20,7 +20,7 @@ spring:
         config:
           default:
             connect-timeout: 10000
-            read-timeout: 20
+            read-timeout: 20000
   graphql:
     graphiql:
       enabled: true
