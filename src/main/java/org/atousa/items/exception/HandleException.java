@@ -1,5 +1,6 @@
 package org.atousa.items.exception;
 
+import io.github.resilience4j.circuitbreaker.CallNotPermittedException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.atousa.items.dto.error.ErrorResponseDto;
@@ -26,6 +27,15 @@ public class HandleException {
         responseDto.setMessage(e.getMessage());
         responseDto.setError(e.getErrorType());
         return new ResponseEntity<>(responseDto, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(value = CallNotPermittedException.class)
+    public ResponseEntity<ErrorResponseDto> handleCBExceptions(Exception e) {
+        log.error("Circuit breaker exception to open circuit. ", e);
+        ErrorResponseDto responseDto = new ErrorResponseDto();
+        responseDto.setMessage(messageResource.getMessage("server.not.available.for.circuit.breaker"));
+        responseDto.setError(ErrorType.GENERAL_EXCEPTION);
+        return new ResponseEntity<>(responseDto, HttpStatus.SERVICE_UNAVAILABLE);
     }
 
     @ExceptionHandler(value = Exception.class)
